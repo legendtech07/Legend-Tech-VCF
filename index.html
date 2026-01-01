@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legend Tech - Contact Gain</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p>Loading Legend Tech VCF...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container hidden">
+        <header class="header">
+            <h1 class="logo">Legend Tech</h1>
+            <p class="tagline">Contact Gain System</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Session Status -->
+            <div class="session-status" id="sessionStatus">
+                <h2>No Active Session</h2>
+                <p>Wait for admin to start a session</p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form hidden" id="contactForm">
+                <h2>Join Contact Gain Session</h2>
+                <form id="participantForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="Enter your phone number">
+                    </div>
+                    <button type="submit" class="btn-submit">Join Session</button>
+                </form>
+            </div>
+
+            <!-- Download Section -->
+            <div class="download-section hidden" id="downloadSection">
+                <h2>Session Completed!</h2>
+                <p>Download contacts from all participants</p>
+                <button id="downloadBtn" class="btn-download">Download VCF File</button>
+                <div class="participants-count" id="participantsCount">
+                    <span>0</span> participants joined
+                </div>
+            </div>
+
+            <!-- Participants List -->
+            <div class="participants-list hidden" id="participantsList">
+                <h3>Participants in this session:</h3>
+                <ul id="participants"></ul>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container hidden" id="progressContainer">
+                <div class="progress-info">
+                    <span>Contacts needed: <span id="neededContacts">100</span></span>
+                    <span>Joined: <span id="joinedContacts">0</span></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Legend Tech Contact Gain System &copy; 2025</p>
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal hidden" id="successModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Success!</h2>
+            <p>Your contact has been added to the session.</p>
+            <button class="btn-ok">OK</button>
+        </div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

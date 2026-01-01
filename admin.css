@@ -1,0 +1,316 @@
+/* Admin Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4a0072 0%, #6a1b9a 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* Admin Loader */
+.admin-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #4a0072 0%, #6a1b9a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.admin-loader-content {
+    text-align: center;
+}
+
+.admin-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Admin Container */
+.admin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Admin Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.admin-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #ff4081, #7c4dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-logout {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff4081, #7c4dff);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-logout:hover {
+    transform: translateY(-2px);
+}
+
+/* Admin Cards */
+.admin-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.admin-card h2 {
+    margin-bottom: 20px;
+    color: #ffcc80;
+    font-size: 1.5rem;
+}
+
+/* Session Controls */
+.session-controls {
+    display: grid;
+    gap: 20px;
+}
+
+.session-controls .form-group {
+    max-width: 300px;
+}
+
+.session-controls input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
+.session-controls input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 64, 129, 0.3);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-start, .btn-end {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-start {
+    background: linear-gradient(45deg, #00c853, #64dd17);
+    color: white;
+}
+
+.btn-end {
+    background: linear-gradient(45deg, #ff5252, #ff4081);
+    color: white;
+}
+
+.btn-start:hover:not(:disabled),
+.btn-end:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-start:disabled,
+.btn-end:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Session Info */
+.session-info {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.session-info p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Tables */
+.participants-container,
+.history-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+    font-weight: 600;
+    color: #ffcc80;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    color: #333;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #6a11cb;
+    text-align: center;
+}
+
+.modal-content .form-group {
+    margin-bottom: 20px;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-weight: 600;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #6a11cb;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+}
+
+.error-message {
+    color: #ff5252;
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 10px;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .admin-card {
+        padding: 15px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .btn-start, .btn-end {
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}

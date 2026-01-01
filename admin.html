@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legend Tech - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <!-- Load Firebase SDKs - UPDATED VERSION -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+</head>
+<body>
+    <!-- Admin Loader -->
+    <div id="adminLoader" class="admin-loader">
+        <div class="admin-loader-content">
+            <div class="admin-spinner"></div>
+            <p>Loading Admin Panel...</p>
+        </div>
+    </div>
+
+    <!-- Admin Content -->
+    <div class="admin-container hidden">
+        <header class="admin-header">
+            <h1 class="admin-logo">Legend Tech Admin</h1>
+            <div class="admin-controls">
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <!-- Session Control -->
+            <div class="admin-card">
+                <h2>Session Control</h2>
+                <div class="session-controls">
+                    <div class="form-group">
+                        <label for="requiredContacts">Required Contacts</label>
+                        <input type="number" id="requiredContacts" min="1" value="100">
+                    </div>
+                    <div class="button-group">
+                        <button id="startSessionBtn" class="btn-start">Start New Session</button>
+                        <button id="endSessionBtn" class="btn-end" disabled>End Current Session</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current Session Info -->
+            <div class="admin-card">
+                <h2>Current Session</h2>
+                <div id="currentSessionInfo" class="session-info">
+                    <p>No active session</p>
+                </div>
+            </div>
+
+            <!-- Active Participants -->
+            <div class="admin-card">
+                <h2>Active Participants <span id="participantCount">(0)</span></h2>
+                <div class="participants-container">
+                    <table id="participantsTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Joined At</th>
+                                <th>IP Address</th>
+                            </tr>
+                        </thead>
+                        <tbody id="participantsBody">
+                            <!-- Participants will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Session History -->
+            <div class="admin-card">
+                <h2>Session History</h2>
+                <div class="history-container">
+                    <table id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Required</th>
+                                <th>Joined</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody">
+                            <!-- History will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Admin Login</h2>
+            <div class="form-group">
+                <label for="adminEmail">Email</label>
+                <input type="email" id="adminEmail" placeholder="Enter admin email">
+            </div>
+            <div class="form-group">
+                <label for="adminPassword">Password</label>
+                <input type="password" id="adminPassword" placeholder="Enter password">
+            </div>
+            <button id="loginBtn" class="btn-login">Login</button>
+            <p id="loginError" class="error-message"></p>
+        </div>
+    </div>
+
+    <!-- UPDATED firebase-config.js inclusion -->
+    <script>
+        // INLINE FIREBASE CONFIG - TEMPORARY FIX
+        const firebaseConfig = {
+            apiKey: "AIzaSyD8tNwfojswPM2vf2RQeG84_0t-ViTdDGU",
+            authDomain: "vcf-contact-gain.firebaseapp.com",
+            projectId: "vcf-contact-gain",
+            storageBucket: "vcf-contact-gain.firebasestorage.app",
+            messagingSenderId: "696356039456",
+            appId: "1:696356039456:web:6d91e5ec36819a4dfd0545"
+        };
+        
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+    </script>
+    <script src="admin.js"></script>
+</body>
+</html>
